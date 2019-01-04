@@ -1,3 +1,34 @@
+===========================
+-Create demo with Angular 7
+===========================
+-Create Project.
+-routing
+-Style,class, modification
+-listing from restp-api (http)
+-Reactive form validation
+-form submit
+-How to make production build.
+
+To Development:
+==============
+npm install -g @angular/cli
+ng new ng7
+cd ng7
+code .
+ng serve -o
+
+To production:
+==============
+ng build --prod
+cd dist/ng7
+http-server -o
+
+
+
+
+======================================================
+
+
 # Ng7
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
