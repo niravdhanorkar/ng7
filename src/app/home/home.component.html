@@ -12,10 +12,35 @@
   'font-size': !h1Style ? '1em': '4em'
 }">Home</h1> -->
 
+<div *ngIf="isOpen">
+  <label for="">{{test}}</label>
+</div>
+
+<button (click)="toggleValue()"> click </button>
+
+
+<label for="" [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
+<br>
+<label for="" [style.color]="gray ? 'gray' : 'red'">Testing</label>
+<br>
+<label for="" [ngStyle]="{
+  'color': gray ? 'gray' : 'red'
+}">Testing</label>
+<br>
+<input type="text" [(ngModel)]="name" />
+display name : {{name}}
+
+
 <h1>Home</h1>
 
+Filter by getter setter:
+<input type="text" [(ngModel)]="input_filter1" #focusInput1/>
+
+Filer by onFilterChange event:
+<input type="text" [ngModel]="input_filter2" #focusInput2 (ngModelChange)="onFilterChange($event)" />
+
 <ul *ngIf="users">
-  <li *ngFor="let user of users.data">
+  <li *ngFor="let user of filteredUser">
     <img [src]="user.avatar">
     <p>{{user.first_name}} {{user.last_name}}</p>
   </li>
