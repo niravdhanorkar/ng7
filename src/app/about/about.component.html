@@ -2,6 +2,37 @@
   <h1 class="row">
     <b> {{ title }} </b>
   </h1>
+
+  Enter Total types of Rooms :
+  <input type="text" [(ngModel)]="noOfTotalTypesOfRoom" />
+  <br />
+  <table>
+    <tr>
+      <th>Types of room</th>
+      <th>Total rooms</th>
+      <th>Genrally Occupied rooms</th>
+      <th>Price of each room</th>
+    </tr>
+    <tr
+      *ngFor="let i of getArray(noOfTotalTypesOfRoom); let i = index"
+      [attr.data-index]="i"
+    >
+      <td>
+        <input [(ngModel)]="typesOfRoom[i]" />
+      </td>
+      <td>
+        <input [(ngModel)]="totalNoOfRooms[i]" />
+      </td>
+      <td>
+        <input [(ngModel)]="occupiedRooms[i]" />
+      </td>
+      <td>
+        <input [(ngModel)]="priceOfEachTypeRoom[i]" />
+      </td>
+    </tr>
+  </table>
+  <button (click)="generateGraph()">Generate</button>
+
   <div class="row">
     <div class="col-6">
       <canvas id="lineChart"> </canvas>
