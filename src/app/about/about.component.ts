@@ -15,6 +15,10 @@ export class AboutComponent implements OnInit{
   totalNoOfRooms = [5,5,5]
   occupiedRooms = [4,3,2]
   priceOfEachTypeRoom = [5000, 10000, 15000]
+  totalIncome = [25000, 50000, 75000]
+  totalIncomeOfSoldRooms = [25000, 20000, 30000, 75000]
+  totalIncomeOfSoldRoomsFree = [25000, 25000, 25000, 75000]
+  totalIncomeOfSoldRoomBid = [25000, 35000, 50000, 75000] 
  
   constructor() {}
 
@@ -22,7 +26,11 @@ export class AboutComponent implements OnInit{
     this.object.LineChart.update()
     this.object.pieChart1.update()
     this.object.barChart.update()
-    this.object.pieChart2.update()    
+    this.object.pieChart2.update()
+    this.object.barChart1.update()
+    this.object.barChart3.update()
+
+    
   }
   
 
@@ -130,16 +138,16 @@ export class AboutComponent implements OnInit{
         labels: this.typesOfRoom,
         datasets: [
           {
-            label: "Current Case",
+            label: "Total Income",
             backgroundColor: "blue",
             yAxisID: "y-axis-1",
-            data: this.occupiedRooms
+            data: this.totalIncome
           },
           {
-            label: "Upxselling Technology",
+            label: "No Upgradation Income",
             backgroundColor: "green",
             yAxisID: "y-axis-2",
-            data: this.totalNoOfRooms
+            data: this.totalIncomeOfSoldRooms
           }
         ]
       },
@@ -147,7 +155,119 @@ export class AboutComponent implements OnInit{
         responsive: true,
         title: {
           display: true,
-          text: "Rooms vs Types of rooms"
+          text: "Total (fully filled) vs No upgradation (not-fully filled)"
+        },
+        tooltips: {
+          mode: "index",
+          intersect: true
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              },
+              type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+              display: true,
+              position: "left",
+              id: "y-axis-1"
+            },
+            {
+              ticks: {
+                beginAtZero: true
+              },              
+              type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+              display: true,
+              position: "right",
+              id: "y-axis-2",
+              gridLines: {
+                drawOnChartArea: false
+              }
+            }
+          ]
+        }
+      }
+    });
+    this.object.barChart1 = new Chart("barChart-2", {
+      type: "bar",
+      data: {
+        labels: this.totalIncome,
+        datasets: [
+          {
+            label: "Total Income",
+            backgroundColor: "blue",
+            yAxisID: "y-axis-1",
+            data: this.totalIncome
+          },
+          {
+            label: "No Upgradation Income",
+            backgroundColor: "green",
+            yAxisID: "y-axis-2",
+            data: this.totalIncomeOfSoldRoomsFree
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: "Total(fully filled) vs Free upgradation (not-fully filled)"
+        },
+        tooltips: {
+          mode: "index",
+          intersect: true
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              },
+              type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+              display: true,
+              position: "left",
+              id: "y-axis-1"
+            },
+            {
+              ticks: {
+                beginAtZero: true
+              },              
+              type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+              display: true,
+              position: "right",
+              id: "y-axis-2",
+              gridLines: {
+                drawOnChartArea: false
+              }
+            }
+          ]
+        }
+      }
+    });
+    this.object.barChart3 = new Chart("barChart-3", {
+      type: "bar",
+      data: {
+        labels: this.totalIncome,
+        datasets: [
+          {
+            label: "Total Income",
+            backgroundColor: "blue",
+            yAxisID: "y-axis-1",
+            data: this.totalIncome
+          },
+          {
+            label: "No Upgradation Income",
+            backgroundColor: "green",
+            yAxisID: "y-axis-2",
+            data: this.totalIncomeOfSoldRoomBid
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: "Total(fully filled) vs Upxselling Technology (not-fully filled)"
         },
         tooltips: {
           mode: "index",
