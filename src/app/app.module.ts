@@ -9,6 +9,8 @@ import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { TourMatMenuModule } from 'ngx-tour-md-menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TourMatMenuModule.forRoot(),
     HttpClientModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
   ],
