@@ -1,7 +1,10 @@
 <div class="container-fluid">
+  <div tourAnchor="some">some</div>
+  <button tourAnchor="btn" >Click</button>
   <h1 class="row">
     <b> {{ title }} </b>
   </h1>
+  <div tourAnchor="enableBackdrop"><h3>enableBackdrop</h3></div>
 
   Enter Total types of Rooms :
   <input type="text" [(ngModel)]="noOfTotalTypesOfRoom" />
@@ -13,10 +16,7 @@
       <th>Genrally Occupied rooms</th>
       <th>Price of each room</th>
     </tr>
-    <tr
-      *ngFor="let i of getArray(noOfTotalTypesOfRoom); let i = index"
-      [attr.data-index]="i"
-    >
+    <tr *ngFor="let i of getArray(noOfTotalTypesOfRoom); let i = index" [attr.data-index]="i">
       <td>
         <input [(ngModel)]="typesOfRoom[i]" />
       </td>
@@ -31,7 +31,7 @@
       </td>
     </tr>
   </table>
-  <button (click)="generateGraph()">Generate</button>
+  <button (click)="generateGraph()" tourAnchor="generate">Generate</button>
 
   <div class="row">
     <div class="col-6">
@@ -49,9 +49,9 @@
       <canvas id="barChart-2"> </canvas>
     </div>
     <div class="row">
-        <div class="col-12">
-            <canvas id="barChart-3"> </canvas>
-          </div>           
+      <div class="col-12">
+        <canvas id="barChart-3"> </canvas>
+      </div>
     </div>
   </div>
 </div>

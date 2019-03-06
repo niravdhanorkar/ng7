@@ -1,63 +1,89 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 import { Chart } from "chart.js";
+import { TourService } from "ngx-tour-md-menu";
 
 @Component({
   selector: "app-about",
   templateUrl: "./about.component.html",
   styleUrls: ["./about.component.scss"]
 })
-export class AboutComponent implements OnInit{
+export class AboutComponent implements OnInit {
   object: any = {}
   title: string = "chart";
 
   noOfTotalTypesOfRoom: number = 3
   typesOfRoom = ["Standard", "Delux", "Super Delux"]
-  totalNoOfRooms = [5,5,5]
-  occupiedRooms = [4,3,2]
+  totalNoOfRooms = [5, 5, 5]
+  occupiedRooms = [4, 3, 2]
   priceOfEachTypeRoom = [5000, 10000, 15000]
   totalIncome = [25000, 50000, 75000]
   totalIncomeOfSoldRooms = [25000, 20000, 30000, 75000]
   totalIncomeOfSoldRoomsFree = [25000, 25000, 25000, 75000]
-  totalIncomeOfSoldRoomBid = [25000, 35000, 50000, 75000] 
- 
-  constructor() {}
+  totalIncomeOfSoldRoomBid = [25000, 35000, 50000, 75000]
 
-  generateGraph(){
+  constructor(public tourService: TourService) {
+    
+    this.tourService.initialize([{
+      anchorId: 'btn',
+      content: 'Welcome...',
+      title: 'Welcome',
+      nextBtnTitle :'>'
+    },{
+      anchorId: 'some',
+      content: 'Some inside!',
+      title: 'Welcome',
+      prevBtnTitle:'<',
+      nextBtnTitle :'>'
+
+    },{
+      anchorId: 'enableBackdrop',
+      // placement: 'top',
+      content: 'You can enable backdrop to highlight active element.',
+      title: 'Backdrop',
+      enableBackdrop: true
+    },{
+      anchorId: 'generate',
+      placement: 'top',
+      content: 'You can enable backdrop to highlight active element.',
+      title: 'Backdrop',
+      enableBackdrop: true
+    }]);
+  }
+  generateGraph() {
     this.object.LineChart.update()
     this.object.pieChart1.update()
     this.object.barChart.update()
     this.object.pieChart2.update()
     this.object.barChart1.update()
     this.object.barChart3.update()
-
-    
   }
-  
 
-  getArray(noOfTimes:number): any{
+
+  getArray(noOfTimes: number): any {
     let arrRooms = []
-    for(let i=0;i<noOfTimes;i++){
+    for (let i = 0; i < noOfTimes; i++) {
       arrRooms.push(i);
     }
     return arrRooms;
   }
 
-  getCurrentIncome(){
-    let arr =[]
+  getCurrentIncome() {
+    let arr = []
     arr = this.priceOfEachTypeRoom.map((obj, index) => {
       return obj * this.occupiedRooms[index]
-    })    
-    return arr;    
+    })
+    return arr;
   }
-  getUpxsellingIncome(){
-    let arr =[]
+  getUpxsellingIncome() {
+    let arr = []
     arr = this.priceOfEachTypeRoom.map((obj, index) => {
       return obj * this.totalNoOfRooms[index]
-    })    
-    return arr;    
-  }  
+    })
+    return arr;
+  }
 
   ngOnInit() {
+
     this.object.LineChart = new Chart("lineChart", {
       type: "line",
       data: {
@@ -109,14 +135,14 @@ export class AboutComponent implements OnInit{
           {
             // data: [137000, 85000],
             data: [
-                this.getUpxsellingIncome().reduce((accumulator, a) => {
-                  return accumulator + a
-                })
+              this.getUpxsellingIncome().reduce((accumulator, a) => {
+                return accumulator + a
+              })
               ,
-                this.getCurrentIncome().reduce((accumulator, a) => {
-                  return accumulator + a
-                })
-              ],
+              this.getCurrentIncome().reduce((accumulator, a) => {
+                return accumulator + a
+              })
+            ],
             backgroundColor: ["green", "blue"],
             label: "Dataset 1"
           }
@@ -175,7 +201,7 @@ export class AboutComponent implements OnInit{
             {
               ticks: {
                 beginAtZero: true
-              },              
+              },
               type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
               display: true,
               position: "right",
@@ -231,7 +257,7 @@ export class AboutComponent implements OnInit{
             {
               ticks: {
                 beginAtZero: true
-              },              
+              },
               type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
               display: true,
               position: "right",
@@ -287,7 +313,7 @@ export class AboutComponent implements OnInit{
             {
               ticks: {
                 beginAtZero: true
-              },              
+              },
               type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
               display: true,
               position: "right",
@@ -310,7 +336,7 @@ export class AboutComponent implements OnInit{
               this.totalNoOfRooms.reduce((accumulator, a) => {
                 return accumulator + a
               })
-            ,
+              ,
               this.occupiedRooms.reduce((accumulator, a) => {
                 return accumulator + a
               })
@@ -329,5 +355,10 @@ export class AboutComponent implements OnInit{
         }
       }
     });
+
+    this.tourService.start();
   }
+
+
+
 }
