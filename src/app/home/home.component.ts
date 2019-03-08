@@ -21,9 +21,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
   constructor(private data: DataService, public tourService: TourService) {
     this.tourService.initialize([{
-      anchorId: 'BTN1',
-      content: 'Welcome...',
+      anchorId: 'Welcome',
+      content: 'Welcome to this website.',
       title: 'Welcome',
+      enableBackdrop: true
     }]);
   }
 

@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <div tourAnchor="some">some</div>
-  <button tourAnchor="btn" >Click</button>
+  <button class="btn btn-primary" tourAnchor="click" >Click</button><br><br>
+  <div class="btn btn-primary" tourAnchor="click2" style="float: left;">Click2</div><br>
   <h1 class="row">
     <b> {{ title }} </b>
   </h1>
-  <div tourAnchor="enableBackdrop"><h3>enableBackdrop</h3></div>
+  <div class="btn btn-primary" tourAnchor="Click3" style="float: left;">Click3</div><br><br>
 
   Enter Total types of Rooms :
   <input type="text" [(ngModel)]="noOfTotalTypesOfRoom" />
@@ -31,7 +31,7 @@
       </td>
     </tr>
   </table>
-  <button (click)="generateGraph()" tourAnchor="generate">Generate</button>
+  <button class="btn btn-primary" (click)="generateGraph()" tourAnchor="Click4">Click4</button>
 
   <div class="row">
     <div class="col-6">

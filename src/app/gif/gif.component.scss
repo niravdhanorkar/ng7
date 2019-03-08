@@ -1,0 +1,26 @@
+.container{
+    margin-top: -30px;
+  }
+  .img-row {
+  float: left;
+  margin-top: 50px;
+  }
+  
+  .img-frame {
+  margin: 0px;
+  border: 5px solid #fff;
+  cursor: pointer;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  }
+  
+  .img-frame:hover, .img-frame:focus {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  }
+  .img-frame:active {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  }

@@ -25,6 +25,8 @@
     "bootstrap": "^4.2.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
+    "ngx-image-zoom": "^0.3.4",
+    "ngx-lightbox": "^1.2.0",
     "ngx-tour-core": "^4.0.1",
     "ngx-tour-md-menu": "^4.0.1",
     "rxjs": "~6.3.3",

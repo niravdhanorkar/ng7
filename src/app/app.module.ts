@@ -11,6 +11,11 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { TourMatMenuModule } from 'ngx-tour-md-menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImageComponent } from './image/image.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { LightboxModule } from 'ngx-lightbox';
+import { VideoComponent } from './video/video.component';
+import { GifComponent } from './gif/gif.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +23,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavComponent,
     AboutComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    ImageComponent,
+    VideoComponent,
+    GifComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TourMatMenuModule.forRoot(),
+    NgxImageZoomModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    LightboxModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

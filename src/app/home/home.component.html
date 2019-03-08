@@ -1,23 +1,11 @@
-<!-- <h1 [class.gray]="h1Style">Home 1</h1>
 
-<h1 [ngClass]="{
-  'gray': h1Style,
-  'large': !h1Style
-}">Home 2</h1>
-
-<h1 [style.color]="h1Style ? 'gray': 'black'">Home 3</h1> -->
-
-<!-- <h1 [ngStyle]="{
-  'color': h1Style ? 'gray': 'black',
-  'font-size': !h1Style ? '1em': '4em'
-}">Home</h1> -->
-<div tourAnchor="BTN1">BTN1</div>
+<button class="btn btn-primary" tourAnchor="Welcome">Welcome</button> &nbsp;
+<button class="btn btn-primary" (click)="toggleValue()"> click </button><br><br>
 
 <div *ngIf="isOpen">
   <label for="">{{test}}</label>
 </div>
 
-<button (click)="toggleValue()"> click </button>
 
 
 <label for="" [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
@@ -38,7 +26,7 @@ Filter by getter setter:
 <input type="text" [(ngModel)]="input_filter1" #focusInput1/>
 
 Filer by onFilterChange event:
-<input type="text" [ngModel]="input_filter2" #focusInput2 (ngModelChange)="onFilterChange($event)" />
+<input type="text" [(ngModel)]="input_filter2" #focusInput2 (ngModelChange)="onFilterChange($event)" />
 
 <ul *ngIf="users">
   <li *ngFor="let user of filteredUser">
