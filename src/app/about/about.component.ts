@@ -24,28 +24,28 @@ export class AboutComponent implements OnInit {
   constructor(public tourService: TourService) {
     
     this.tourService.initialize([{
-      anchorId: 'btn',
-      content: 'Welcome...',
-      title: 'Welcome',
-      nextBtnTitle :'>'
-    },{
-      anchorId: 'some',
-      content: 'Some inside!',
-      title: 'Welcome',
-      prevBtnTitle:'<',
-      nextBtnTitle :'>'
+      anchorId: 'click',
+      content: 'Click here.',
+      title: 'Click',
+      enableBackdrop: true
 
     },{
-      anchorId: 'enableBackdrop',
+      anchorId: 'click2',
+      content: 'Click2 is here.',
+      title: 'Click2',
+      enableBackdrop: true
+
+    },{
+      anchorId: 'Click3',
       // placement: 'top',
-      content: 'You can enable backdrop to highlight active element.',
-      title: 'Backdrop',
+      content: 'Click3 is here..',
+      title: 'Click3',
       enableBackdrop: true
     },{
-      anchorId: 'generate',
-      placement: 'top',
-      content: 'You can enable backdrop to highlight active element.',
-      title: 'Backdrop',
+      anchorId: 'Click4',
+      // placement: 'top',
+      content: 'Click4 is here.',
+      title: 'Click4',
       enableBackdrop: true
     }]);
   }
@@ -356,9 +356,10 @@ export class AboutComponent implements OnInit {
       }
     });
 
-    this.tourService.start();
   }
 
-
+  Demo(){
+    this.tourService.start();
+  }
 
 }
