@@ -1,14 +1,11 @@
-<button class="btn btn-success border" (click)="Demo()" >For visit this page click Here.</button><br><br>
 
-<button class="btn btn-default border"  tourAnchor="Welcome">Welcome</button>
-<br><br>
+<button class="btn btn-primary" tourAnchor="Welcome">Welcome</button> &nbsp;
+<button class="btn btn-primary" (click)="toggleValue()"> click </button><br><br>
 
 <div *ngIf="isOpen">
   <label>{{test}}</label>
 </div>
 
-<button class="btn btn-default border" (click)="toggleValue()"> click </button>
-<br><br>
 
 <label [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
 <br>
@@ -27,6 +24,8 @@ display name : {{name}}
 Filter by getter setter:
 <input type="text" [(ngModel)]="input_filter1" #focusInput1/>
 
+Filer by onFilterChange event:
+<input type="text" [(ngModel)]="input_filter2" #focusInput2 (ngModelChange)="onFilterChange($event)" />
 
 <ul *ngIf="users">
   <li *ngFor="let user of filteredUser">
