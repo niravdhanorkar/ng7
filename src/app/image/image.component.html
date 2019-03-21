@@ -1,5 +1,5 @@
-<div class="column has-text-centered">
-  <div class="img-row" *ngFor="let image of albums; let i=index">
-    <img class="img-frame" [src]="image.thumb" (click)="open(i)" height="200px" width="230px" />
-  </div>
-</div>
+<form [formGroup]="messageFrom" novalidate (ngSubmit)="onSubmit()">
+  <input type="file" (change)="onFileChange($event)"/>
+  <img [src]="imgSrc" style="max-width: 300px;max-height: 200px;">
+  <button type="submit" [disabled]="messageFrom.invalid || messageFrom.prestine">Submit</button>
+</form>

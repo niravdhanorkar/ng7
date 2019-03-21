@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Lightbox, LightboxConfig, LightboxEvent, LIGHTBOX_EVENT, IEvent, IAlbum } from 'ngx-lightbox';
-import { Subscription } from 'rxjs';
+
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-image',
@@ -8,47 +8,48 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent implements OnInit {
+  
+  messageFrom: FormGroup; 
+  submitted: boolean;
+  success: boolean;
+  imgSrc: any;
 
-  public albums: Array<IAlbum>;
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
+
+    this.messageFrom = this.fb.group({
+      file: [null, Validators.required]
+    });
+  }
+  
+  onFileChange(event) {
+    const reader = new FileReader();
  
-  private _subscription: Subscription;
-  constructor(
-    private _lightbox: Lightbox,
-    private _lightboxEvent: LightboxEvent,
-    private _lighboxConfig: LightboxConfig
-  ) {
-    this.albums = [];
-    for (let i = 1; i <= 4; i++) {
-      const src = 'assets/Images/cat' + i + '.jpeg';
-      const caption = 'Image ' + i + ' caption here';
-      const thumb = 'assets/Images/cat' + i + '-thumb.jpeg';
-      const album = {
-         src: src,
-         caption: caption,
-         thumb: thumb
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+  
+      reader.onload = () => {
+        this.messageFrom.patchValue({
+          file: reader.result
+       });      
+       this.imgSrc = reader.result;
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
       };
-
-      this.albums.push(album);
     }
-
-    // set default config
-    this._lighboxConfig.fadeDuration = 1;
   }
 
-  open(index: number): void {
-    this._subscription = this._lightboxEvent.lightboxEvent$.subscribe((event: IEvent) => this._onReceivedEvent(event));
-
-    // override the default config
-    this._lightbox.open(this.albums, index, { wrapAround: true, showImageNumberLabel: true });
-  }
-
-  private _onReceivedEvent(event: IEvent): void {
-    if (event.id === LIGHTBOX_EVENT.CLOSE) {
-      this._subscription.unsubscribe();
+  onSubmit(){
+    this.submitted = true;
+    if(this.messageFrom.invalid){
+      return;
     }
+    this.success = true;
+    console.log(this.messageFrom)
   }
 
   ngOnInit() {
   }
+  
 
 }
