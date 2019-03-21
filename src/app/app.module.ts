@@ -28,6 +28,7 @@ import { GifComponent } from './gif/gif.component';
     VideoComponent,
     GifComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,7 +40,10 @@ import { GifComponent } from './gif/gif.component';
     FormsModule,
     LightboxModule
   ],
+
   providers: [],
   bootstrap: [ AppComponent ]
+
 })
+
 export class AppModule { }

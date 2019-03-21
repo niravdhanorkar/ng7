@@ -356,9 +356,10 @@ export class AboutComponent implements OnInit {
       }
     });
 
-    this.tourService.start();
   }
 
-
+  Demo(){
+    this.tourService.start();
+  }
 
 }

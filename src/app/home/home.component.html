@@ -3,16 +3,15 @@
 <button class="btn btn-primary" (click)="toggleValue()"> click </button><br><br>
 
 <div *ngIf="isOpen">
-  <label for="">{{test}}</label>
+  <label>{{test}}</label>
 </div>
 
 
-
-<label for="" [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
+<label [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
 <br>
-<label for="" [style.color]="gray ? 'gray' : 'red'">Testing</label>
+<label [style.color]="gray ? 'gray' : 'red'">Testing</label>
 <br>
-<label for="" [ngStyle]="{
+<label [ngStyle]="{
   'color': gray ? 'gray' : 'red'
 }">Testing</label>
 <br>
@@ -35,4 +34,4 @@ Filer by onFilterChange event:
   </li>
 
 </ul>
-<button (click)="firstClick()">Click me</button>
+<button class="btn btn-default border" (click)="firstClick()">Click me</button>
