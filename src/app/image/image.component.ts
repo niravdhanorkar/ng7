@@ -22,9 +22,6 @@ export class ImageComponent implements OnInit {
   
   onFileChange(event) {
     const reader = new FileReader();
-    if(event.target.files.length != 1){
-      return;
-    }
  
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;

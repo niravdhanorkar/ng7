@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { DataService } from '../data.service';
 import { NgModel } from '@angular/forms';
+import { TourService } from "ngx-tour-md-menu";
+
 
 @Component({
   selector: 'app-home',
@@ -11,14 +13,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   h1Style: boolean = false;
   test: string = "nirav"
   isOpen: boolean = false
-  name: string = "bhan Name"
+  name: string = "first Name"
   gray: boolean = false;
   users: any;
   usersData: any;
   private filteredUser: any;
   
-  constructor(private data: DataService) {
-
+  constructor(private data: DataService, public tourService: TourService) {
+    this.tourService.initialize([{
+      anchorId: 'Welcome',
+      content: 'Welcome to this website.',
+      title: 'Welcome',
+      enableBackdrop: true
+    }]);
   }
 
   toggleValue(){
@@ -33,6 +40,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.filteredUser = this.users.data;
       console.log(this.users)
     })    
+  }
+  Demo(){
+    this.tourService.start();
   }
 
   firstClick(){

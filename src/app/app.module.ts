@@ -10,6 +10,11 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ImageComponent } from './image/image.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { LightboxModule } from 'ngx-lightbox';
+import { VideoComponent } from './video/video.component';
+import { GifComponent } from './gif/gif.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +23,25 @@ import { ImageComponent } from './image/image.component';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    ImageComponent
+    ImageComponent,
+    VideoComponent,
+    GifComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxImageZoomModule.forRoot(),
     HttpClientModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    LightboxModule
   ],
+
   providers: [],
   bootstrap: [ AppComponent ]
+
 })
+
 export class AppModule { }

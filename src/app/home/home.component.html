@@ -1,29 +1,20 @@
-<!-- <h1 [class.gray]="h1Style">Home 1</h1>
+<button class="btn btn-success border" (click)="Demo()" >For visit this page click Here.</button><br><br>
 
-<h1 [ngClass]="{
-  'gray': h1Style,
-  'large': !h1Style
-}">Home 2</h1>
-
-<h1 [style.color]="h1Style ? 'gray': 'black'">Home 3</h1> -->
-
-<!-- <h1 [ngStyle]="{
-  'color': h1Style ? 'gray': 'black',
-  'font-size': !h1Style ? '1em': '4em'
-}">Home</h1> -->
+<button class="btn btn-default border"  tourAnchor="Welcome">Welcome</button>
+<br><br>
 
 <div *ngIf="isOpen">
-  <label for="">{{test}}</label>
+  <label>{{test}}</label>
 </div>
 
-<button (click)="toggleValue()"> click </button>
+<button class="btn btn-default border" (click)="toggleValue()"> click </button>
+<br><br>
 
-
-<label for="" [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
+<label [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
 <br>
-<label for="" [style.color]="gray ? 'gray' : 'red'">Testing</label>
+<label [style.color]="gray ? 'gray' : 'red'">Testing</label>
 <br>
-<label for="" [ngStyle]="{
+<label [ngStyle]="{
   'color': gray ? 'gray' : 'red'
 }">Testing</label>
 <br>
@@ -36,8 +27,6 @@ display name : {{name}}
 Filter by getter setter:
 <input type="text" [(ngModel)]="input_filter1" #focusInput1/>
 
-Filer by onFilterChange event:
-<input type="text" [ngModel]="input_filter2" #focusInput2 (ngModelChange)="onFilterChange($event)" />
 
 <ul *ngIf="users">
   <li *ngFor="let user of filteredUser">
@@ -46,4 +35,4 @@ Filer by onFilterChange event:
   </li>
 
 </ul>
-<button (click)="firstClick()">Click me</button>
+<button class="btn btn-default border" (click)="firstClick()">Click me</button>
