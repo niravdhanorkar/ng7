@@ -1,0 +1,37 @@
+
+<button class="btn btn-primary" tourAnchor="Welcome">Welcome</button> &nbsp;
+<button class="btn btn-primary" (click)="toggleValue()"> click </button><br><br>
+
+<div *ngIf="isOpen">
+  <label>{{test}}</label>
+</div>
+
+
+<label [ngClass]="{'gray': gray, 'red': !gray}">Testing</label>
+<br>
+<label [style.color]="gray ? 'gray' : 'red'">Testing</label>
+<br>
+<label [ngStyle]="{
+  'color': gray ? 'gray' : 'red'
+}">Testing</label>
+<br>
+<input type="text" [(ngModel)]="name" />
+display name : {{name}}
+
+
+<h1>Home</h1>
+
+Filter by getter setter:
+<input type="text" [(ngModel)]="input_filter1" #focusInput1/>
+
+Filer by onFilterChange event:
+<input type="text" [(ngModel)]="input_filter2" #focusInput2 (ngModelChange)="onFilterChange($event)" />
+
+<ul *ngIf="users">
+  <li *ngFor="let user of filteredUser">
+    <img [src]="user.avatar">
+    <p>{{user.first_name}} {{user.last_name}}</p>
+  </li>
+
+</ul>
+<button class="btn btn-default border" (click)="firstClick()">Click me</button>

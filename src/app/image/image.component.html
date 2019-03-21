@@ -1,0 +1,5 @@
+<form [formGroup]="messageFrom" novalidate (ngSubmit)="onSubmit()">
+  <input type="file" (change)="onFileChange($event)"/>
+  <img [src]="imgSrc" style="max-width: 300px;max-height: 200px;">
+  <button type="submit" [disabled]="messageFrom.invalid || messageFrom.prestine">Submit</button>
+</form>
